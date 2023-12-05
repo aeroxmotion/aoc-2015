@@ -104,6 +104,6 @@ describe("day14", () => {
       }
     }
 
-    expect(maxPoints).toBe(1256);
+    expect(maxPoints).toBe(1_256);
   });
 });
