@@ -75,7 +75,7 @@ function day15(input: string, calories?: number): number {
     }
 
     for (let i = 1; i < recipe.length; i++) {
-      const nextRecipe = structuredClone(recipe);
+      const nextRecipe = recipe.map((v) => v.slice() as [string, number]);
 
       nextRecipe[i][1] += 1;
       nextRecipe[0][1] -= 1;

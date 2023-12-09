@@ -27,6 +27,10 @@ function neighborsOn(grid: Light[][], X: number, Y: number): number {
   return n;
 }
 
+function clone(grid: Light[][]) {
+  return grid.map((row) => row.slice());
+}
+
 function day18(
   grid: Light[][],
   alwaysOn: `${number},${number}`[] = [],
@@ -34,7 +38,7 @@ function day18(
   let total = 100;
   let lightsOn = 0;
 
-  grid = structuredClone(grid);
+  grid = clone(grid);
 
   for (const coords of alwaysOn) {
     const [x, y] = coords.split(",");
@@ -44,7 +48,7 @@ function day18(
   while (total--) {
     lightsOn = 0;
 
-    const nextGrid = structuredClone(grid);
+    const nextGrid = clone(grid);
 
     for (let y = 0; y < grid.length; y++) {
       for (let x = 0; x < grid[y].length; x++) {
@@ -60,7 +64,7 @@ function day18(
 
         nextGrid[y][x] = value;
 
-        if (value == Light.On) {
+        if (value === Light.On) {
           lightsOn++;
         }
       }
